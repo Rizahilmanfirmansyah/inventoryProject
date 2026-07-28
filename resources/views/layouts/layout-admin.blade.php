@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Inventory</title>
+    <title>SIPERBA</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -117,56 +117,59 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title">Dashboard</li><!-- /.menu-title -->
+                    <li class="menu-title">Dashboard Barang</li><!-- /.menu-title -->
                     <li class="">
                         <a href="{{route('dashboard.admin')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
-                    <li class="menu-title">Data User</li><!-- /.menu-title -->
+                    <li class="menu-title">Data User Admin</li><!-- /.menu-title -->
                     {{-- <li class="">
                         <a href="{{route('user.all')}}"><i class="menu-icon fa fa-group"></i>Users</a>
                     </li> --}}
-                    <li class="">
+                    {{-- <li class="">
                         <a href="{{route('customer.all')}}"><i class="menu-icon fa fa-user"></i>Customer</a>
-                    </li>
-                    <li class="">
+                    </li> --}}
+                    {{-- <li class="">
                         <a href="{{route('sales.all')}}"><i class="menu-icon fa fa-shopping-cart"></i>Sales</a>
+                    </li> --}}
+                    <li class="">
+                        <a href="{{route('user.all')}}"><i class="menu-icon fa fa-group"></i>Users</a>
                     </li>
                     <li class="">
                         <a href="{{route('suppliers.all')}}"><i class="menu-icon fa fa-truck"></i>Supplier</a>
-                    </li>
-                    <li class="menu-title">Product Item</li>
+                    </li> 
+                    <li class="menu-title">Item Barang</li>
                     <li class="">
                         <a href="{{route('category.all')}}"><i class="menu-icon fa fa-tasks"></i>Kategori</a>
                     </li>
                     <li class="">
-                        <a href="{{route('product.all')}}"><i class="menu-icon fa fa-archive"></i>Products</a>
+                        <a href="{{route('product.all')}}"><i class="menu-icon fa fa-archive"></i>Barang</a>
                     </li>
                     <li class="">
-                        <a href="{{route('product_masuk.all')}}"><i class="menu-icon fa fa-sign-in"></i>Product Masuk</a>
+                        <a href="{{route('product_masuk.all')}}"><i class="menu-icon fa fa-sign-in"></i>Barang Masuk</a>
                     </li>
                     <li class="">
-                        <a href="{{route('product_keluar.all')}}"><i class="menu-icon fa fa-sign-out"></i>Product Keluar</a>
+                        <a href="{{route('product_keluar.all')}}"><i class="menu-icon fa fa-sign-out"></i>Barang Keluar</a>
                     </li>
-                    <li class="">
-                        <a href="{{route('retur.all')}}"><i class="menu-icon fa fa-inbox"></i>Product Retur</a>
+                    <li>
+                        <a href="{{route('peminjaman.all')}}"><i class="menu-icon fa fa-sign-out"></i>Peminjaman Barang</a>
                     </li>
+                    {{-- <li class="">
+                        <a href="{{route('retur.all')}}"><i class="menu-icon fa fa-inbox"></i>Barang Retur</a>
+                    </li> --}}
                     <li class="menu-title">User Activity</li>
                     @if (Auth::user()->role === 'admin')
                     <li class="">
-                        <a href="{{route('user.all')}}"><i class="menu-icon fa fa-group"></i>Users</a>
-                    </li>
-                    <li class="">
-                        <a href="{{route('product.activity')}}"><i class="menu-icon fa fa-archive"></i>Aktivitas Produk</a>
+                        <a href="{{route('product.activity')}}"><i class="menu-icon fa fa-archive"></i>Aktivitas Barang</a>
                     </li> 
                     <li class="">
-                        <a href="{{route('product_masuk.activity')}}"><i class="menu-icon fa fa-arrow-circle-right"></i>Log Product Masuk</a>
+                        <a href="{{route('product_masuk.activity')}}"><i class="menu-icon fa fa-arrow-circle-right"></i>Log Barang Masuk</a>
                     </li> 
                     <li class="">
-                        <a href="{{route('product_keluar.activity')}}"><i class="menu-icon fa fa-arrow-circle-left"></i>Log Product Keluar</a>
+                        <a href="{{route('product_keluar.activity')}}"><i class="menu-icon fa fa-arrow-circle-left"></i>Log Barang Keluar</a>
                     </li>  
-                    <li class="">
-                        <a href="{{route('retur.activity')}}"><i class="menu-icon fa fa-inbox"></i>Log Product Retur</a>
-                    </li>                       
+                    {{-- <li class="">
+                        <a href="{{route('retur.activity')}}"><i class="menu-icon fa fa-inbox"></i>Log Barang Retur</a>
+                    </li>                        --}}
                     @endif
                     
                     {{-- <li class="menu-title">Order</li><!-- /.menu-title -->
@@ -292,7 +295,7 @@
                 <div class="navbar-header">
                     {{-- <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
                     <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a> --}}
-                    <a href="#" class="navbar-brand"><b style="color: #2FDBBC;">The </b>Inventory</a>
+                    <a href="#" class="navbar-brand"><b style="color: #922c1a;">SIPERBA </b> UNAS PASIM</a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -311,9 +314,6 @@
                             @livewire('admin.admin-confirm-batal-order-component')
                             @livewire('admin.admin-notif-component')
                         </div> --}}
-
-                        
-
                         {{-- <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>

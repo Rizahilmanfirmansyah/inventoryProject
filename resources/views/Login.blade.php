@@ -1,15 +1,13 @@
 @extends('layouts.layout-login')
 
 @section('content')
-    
-
-
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-{{-- <head>
+    <!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <html class="no-js" lang=""> <!--<![endif]-->
+    {{-- <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The Inventory</title>
@@ -40,53 +38,59 @@
 
     </style>
 </head> --}}
-<body>
-    <div class="sufee-login d-flex align-content-center flex-wrap">
-        <div class="container">
-            <div class="login-content">
-                <div class="login-logo">
-                    <a href="index.html">
-                        <img class="align-content" src="images/logo.png" alt="">
-                    </a>
-                </div>
-                <div class="card login-form">
-                    <div class="title text-center">
-                        <h3><b style="color: #2FDBBC;">The</b> Inventory</h3>
+
+    <body>
+        <div class="sufee-login d-flex align-content-center flex-wrap">
+            <div class="container">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="index.html">
+                            <img class="align-content" src="images/logo.png" alt="">
+                        </a>
                     </div>
-                    <div style="margin-top: 15px;">
-                        @if (Session::has('notif'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">{{Session::get('notif')}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div> 
-                        @endif
-                    </div>
-                    <form action="{{ route('aksilogin')}}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label class="form-label">Email address</label>
-                            <input type="email" class="form-control" placeholder="Email" name="email">
-                            @error('email')
-                            <span class="error">{{$message}}</span>
-                            @enderror
+                    <div class="card login-form">
+                        <div class="title text-center">
+                            <h3><b style="color: #922c1a;">SIPERBA</b>
+                                <p><h3><b>UNAS PASIM</b></h3>
+                                </p>
+                            </h3>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password">
-                            @error('password')
-                            <span class="error">{{$message}}</span>
-                            @enderror
+                        <div style="margin-top: 15px;">
+                            @if (Session::has('notif'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ Session::get('notif') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                         </div>
-                        <div class="checkbox" style="margin-top: 15px;">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                            {{-- <label class="pull-right">
+                        <form action="{{ route('aksilogin') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label class="form-label">Email address</label>
+                                <input type="email" class="form-control" placeholder="Email" name="email">
+                                @error('email')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                @error('password')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="checkbox" style="margin-top: 15px;">
+                                <label>
+                                    <input type="checkbox"> Remember Me
+                                </label>
+                                {{-- <label class="pull-right">
                                 <a href="#">Forgotten Password?</a>
                             </label> --}}
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                        {{-- <div class="social-login-content">
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                            {{-- <div class="social-login-content">
                             <div class="social-button">
                                 <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
                                 <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button>
@@ -95,20 +99,21 @@
                         <div class="register-link m-t-15 text-center">
                             <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
                         </div> --}}
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="{{asset('e_admin/js/main.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+        <script src="{{ asset('e_admin/js/main.js') }}"></script>
 
-</body>
-</html>
+    </body>
+
+    </html>
 @endsection
 
 

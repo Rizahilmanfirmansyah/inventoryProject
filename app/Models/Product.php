@@ -50,5 +50,10 @@ class Product extends Model
     {
         return $this->hasMany(Retur::class, 'id');
     }
+
+    public function peminjaman_barang()
+    {
+        return $this->hasMany(Pembar::class, 'id');
+    }
     
 }

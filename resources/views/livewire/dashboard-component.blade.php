@@ -1,5 +1,5 @@
 <div>
-    <h3>Dashboard Hi, {{Auth::user()->name}}</h3>
+    <h3>Hi, {{Auth::user()->name}} Selamat Datang Di SIPERBA PASIM Yaitu Sistem Persediaan Barang UNAS PASIM</h3>
     <br>
     <div class="row">
         <div class="col-lg-3 col-md-6">

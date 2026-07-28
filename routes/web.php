@@ -43,6 +43,10 @@ use App\Livewire\Activity\ReturActivityComponent;
 use App\Livewire\Retur\ReturAllComponent;
 use App\Livewire\Retur\ReturAddComponent;
 use App\Livewire\Retur\ReturEditComponent;
+use App\Livewire\PeminjamanBarang\PeminjamanAddComponent;
+use App\Livewire\PeminjamanBarang\PeminjamanAllComponent;
+use App\Livewire\PeminjamanBarang\PeminjamanEditComponent;
+
 
 
 
@@ -128,6 +132,10 @@ Route::get('edit-product_out/{pk_id}', PkEditComponent::class)->name('product_ke
 Route::get('all-retur', ReturAllComponent::class)->name('retur.all');
 Route::get('add-retur', ReturAddComponent::class)->name('retur.add');
 Route::get('edit-retur/{retur_id}', ReturEditComponent::class)->name('retur.edit');
+
+Route::get('peminjaman', PeminjamanAllComponent::class)->name('peminjaman.all');
+Route::get('add-peminjaman', PeminjamanAddComponent::class)->name('peminjaman.add');
+Route::get('edit-peminjaman/{peminjaman_id}', PeminjamanEditComponent::class)->name('peminjaman.edit');
 
 Route::post('import-retur', [ReturImportController::class, 'ReturImport'])->name('retur.import');
 Route::get('export-retur', [ReturImportController::class, 'ReturExport'])->name('retur.export');
