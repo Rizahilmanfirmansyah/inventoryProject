@@ -89,7 +89,7 @@ class PeminjamanEditComponent extends Component
 
         $peminjaman->save();
 
-        session()->flash('notif', 'Berhasil diupdate.');
+        session()->flash('notif', 'PeminjamanBerhasil diupdate.');
 
         return redirect()->route('peminjaman.all');
     }

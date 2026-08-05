@@ -30,6 +30,8 @@ class DashboardComponent extends Component
     public $chartKeluarData   = [];
     public $chartStokLabels   = [];
     public $chartStokData     = [];
+    public $pembarChartLabels = [];
+    public $pembarChartData   = [];
 
     // mount() dipanggil sekali saat komponen dimuat
     public function mount()
@@ -39,6 +41,7 @@ class DashboardComponent extends Component
 
     public function loadData()
     {
+        // mengambil data peminjaman barang yeng telah selesai untuk masuk kedalam chart
         $this->totalProduct  = Product::count();
         $this->totalUser     = User::count();
         $this->totalPembar   = Pembar::count();
@@ -46,7 +49,6 @@ class DashboardComponent extends Component
         $this->totalStok     = Product::sum('qty');
         $this->stokMenipis   = Product::where('qty', '<=', 5)->count();
 
-        //cara agas menampilkan produk bisa di batasi menjadi 10 produk saja yang tampil di dashboard
         $this->products = Product::with('category')
             ->orderBy('qty', 'asc')
             ->take(7)
@@ -63,6 +65,20 @@ class DashboardComponent extends Component
             ->latest()
             ->take(5)
             ->get();
+        
+        $this->pembarChart = Pembar::where('status_persetujuan', 'Selesai')
+            ->select(
+                DB::raw("MONTHNAME(created_at) as bulan"),
+                DB::raw("MONTH(created_at) as bulan_num"),
+                DB::raw("SUM(qty) as total")
+            )
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan', 'bulan_num')
+            ->orderBy('bulan_num')
+            ->get();
+        
+        $this->pembarChartLabels = $this->pembarChart->pluck('bulan')->toArray();
+        $this->pembarChartData   = $this->pembarChart->pluck('total')->toArray();
 
         // Chart barang masuk per bulan
         $masuk = Product_masuk::select(

@@ -196,7 +196,83 @@
                 </div>
             </div>
         </div>
+
+         {{-- Chart Peminjaman --}}
+        <div class="col-xl-6">
+            <div class="card border shadow-sm h-100" style="border-radius:14px;border-color:#e5e7eb!important">
+                <div class="card-header bg-white border-bottom d-flex align-items-center justify-content-between"
+                    style="border-color:#f3f4f6!important;border-radius:14px 14px 0 0;padding:14px 20px">
+                    <div>
+                        <div class="fw-bold" style="font-size:14px;color:#1a1a2e">
+                            <i class="bi bi-people-fill me-2" style="color:#10b981"></i>
+                            Peminjaman per Bulan
+                        </div>
+                        <div class="text-muted" style="font-size:12px">Tahun {{ date('Y') }}</div>
+                    </div>
+                    <span class="badge" style="background:#d1fae5;color:#065f46;font-size:11px">
+                        Bar Chart
+                    </span>
+                </div>
+                <div class="card-body p-3">
+                    <canvas id="chartPembar" height="220"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card border shadow-sm" style="border-radius:14px;border-color:#e5e7eb!important">
+                <div class="card-header bg-white border-bottom d-flex align-items-center justify-content-between"
+                    style="border-color:#f3f4f6!important;border-radius:14px 14px 0 0;padding:14px 20px">
+                    <div>
+                        <div class="fw-bold" style="font-size:14px;color:#1a1a2e">
+                            <i class="bi bi-hourglass-split me-2" style="color:#f97316"></i>
+                            Peminjaman Pending
+                        </div>
+                        <div class="text-muted" style="font-size:12px">Menunggu persetujuan admin</div>
+                    </div>
+                    <a href="{{ route('peminjaman.all') }}" class="text-decoration-none fw-semibold"
+                        style="font-size:12px;color:#6C63FF">
+                        Kelola →
+                    </a>
+                </div>
+                <div class="card-body p-0">
+                    @forelse($pembarPending as $pinjam)
+                        <div class="d-flex align-items-center gap-3 px-4 py-3"
+                            style="border-bottom:1px solid #f9fafb">
+                            <div
+                                style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#6C63FF,#4f46e5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">
+                                {{ strtoupper(substr($pinjam->nama_mhs ?? 'U', 0, 1)) }}
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-bold" style="font-size:13px">
+                                    {{ $pinjam->nama_mhs ?? '-' }}
+                                </div>
+                                <div class="text-muted" style="font-size:11.5px">
+                                    {{ $pinjam->product->nama ?? '-' }}
+                                    × {{ $pinjam->jumlah ?? 1 }} unit
+                                </div>
+                                <div style="font-size:11px;color:#f97316;font-weight:600">
+                                    <i class="bi bi-calendar me-1"></i>
+                                    Jatuh tempo:
+                                    {{ \Carbon\Carbon::parse($pinjam->tgl_kembali ?? now())->format('d M Y') }}
+                                </div>
+                            </div>
+                            <span class="badge rounded-pill px-3 py-2"
+                                style="background:#fef3c7;color:#92400e;font-size:11.5px">
+                                Pending
+                            </span>
+                        </div>
+                    @empty
+                        <div class="text-center text-muted py-4" style="font-size:13px">
+                            <i class="bi bi-check-circle me-2 text-success"></i>
+                            Tidak ada peminjaman pending
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+        
     </div>
+    
 
     {{-- ============================================================ --}}
     {{-- TABEL PRODUK + DOUGHNUT STOK                                --}}
@@ -331,58 +407,7 @@
     <div class="row g-3">
 
         {{-- Peminjaman Pending --}}
-        <div class="col-xl-7">
-            <div class="card border shadow-sm" style="border-radius:14px;border-color:#e5e7eb!important">
-                <div class="card-header bg-white border-bottom d-flex align-items-center justify-content-between"
-                    style="border-color:#f3f4f6!important;border-radius:14px 14px 0 0;padding:14px 20px">
-                    <div>
-                        <div class="fw-bold" style="font-size:14px;color:#1a1a2e">
-                            <i class="bi bi-hourglass-split me-2" style="color:#f97316"></i>
-                            Peminjaman Pending
-                        </div>
-                        <div class="text-muted" style="font-size:12px">Menunggu persetujuan admin</div>
-                    </div>
-                    <a href="{{ route('peminjaman.all') }}" class="text-decoration-none fw-semibold"
-                        style="font-size:12px;color:#6C63FF">
-                        Kelola →
-                    </a>
-                </div>
-                <div class="card-body p-0">
-                    @forelse($pembarPending as $pinjam)
-                        <div class="d-flex align-items-center gap-3 px-4 py-3"
-                            style="border-bottom:1px solid #f9fafb">
-                            <div
-                                style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#6C63FF,#4f46e5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">
-                                {{ strtoupper(substr($pinjam->nama_mhs ?? 'U', 0, 1)) }}
-                            </div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold" style="font-size:13px">
-                                    {{ $pinjam->nama_mhs ?? '-' }}
-                                </div>
-                                <div class="text-muted" style="font-size:11.5px">
-                                    {{ $pinjam->product->nama ?? '-' }}
-                                    × {{ $pinjam->jumlah ?? 1 }} unit
-                                </div>
-                                <div style="font-size:11px;color:#f97316;font-weight:600">
-                                    <i class="bi bi-calendar me-1"></i>
-                                    Jatuh tempo:
-                                    {{ \Carbon\Carbon::parse($pinjam->tgl_kembali ?? now())->format('d M Y') }}
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill px-3 py-2"
-                                style="background:#fef3c7;color:#92400e;font-size:11.5px">
-                                Pending
-                            </span>
-                        </div>
-                    @empty
-                        <div class="text-center text-muted py-4" style="font-size:13px">
-                            <i class="bi bi-check-circle me-2 text-success"></i>
-                            Tidak ada peminjaman pending
-                        </div>
-                    @endforelse
-                </div>
-            </div>
-        </div>
+        
 
         {{-- Alert Stok Menipis --}}
         <div class="col-xl-5">
@@ -451,12 +476,20 @@
         var dataKeluarRaw  = {!! json_encode($chartKeluarData) !!};
         var labelStok      = {!! json_encode($chartStokLabels) !!};
         var dataStok       = {!! json_encode($chartStokData) !!};
+        var labelPembarRaw = {!! json_encode($pembarChartLabels) !!};
+        var dataPembarRaw  = {!! json_encode($pembarChartData) !!};
 
         var bulanMap = {
             'January':0,'February':1,'March':2,'April':3,
             'May':4,'June':5,'July':6,'August':7,
             'September':8,'October':9,'November':10,'December':11
         };
+
+        var dataPembar = [0,0,0,0,0,0,0,0,0,0,0,0];
+        labelPembarRaw.forEach(function(bln, i) {
+            var idx = bulanMap[bln];
+            if (idx !== undefined) dataPembar[idx] = dataPembarRaw[i];
+        });
 
         var dataMasuk = [0,0,0,0,0,0,0,0,0,0,0,0];
         labelMasukRaw.forEach(function(bln, i) {
@@ -544,6 +577,43 @@
                     tooltips: {
                         callbacks: {
                             label: function(item) { return ' ' + item.yLabel + ' unit keluar'; }
+                        }
+                    }
+                }
+            });
+        }
+
+        var canvasPembar = document.getElementById('chartPembar');
+        if (canvasPembar) {
+            window.myChartPembar = new Chart(canvasPembar.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: allBulan,
+                    datasets: [{
+                        label: 'Peminjaman',
+                        data: dataPembar,
+                        backgroundColor: 'rgba(16,185,129,0.25)',
+                        borderColor: 'rgba(16,185,129,1)',
+                        borderWidth: 1.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    legend: { display: false },
+                    scales: {
+                        yAxes: [{
+                            ticks: { beginAtZero: true, fontSize: 10, fontColor: '#9ca3af', stepSize: 5 },
+                            gridLines: { color: '#f3f4f6' }
+                        }],
+                        xAxes: [{
+                            ticks: { fontSize: 10, fontColor: '#9ca3af' },
+                            gridLines: { display: false }
+                        }]
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(item) { return ' ' + item.yLabel + ' peminjaman'; }
                         }
                     }
                 }

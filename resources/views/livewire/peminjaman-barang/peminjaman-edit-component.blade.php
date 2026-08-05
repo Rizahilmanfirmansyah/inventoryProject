@@ -61,6 +61,7 @@
                                     <option value="Disetujui">Disetujui</option>
                                     <option value="Ditolak">Ditolak</option>
                                     <option value="Dikembalikan">Dikembalikan</option>
+                                    <option value="Selesai">Selesai</option>
                                 </select>
                             </div>
                             <div class="mt-2">
