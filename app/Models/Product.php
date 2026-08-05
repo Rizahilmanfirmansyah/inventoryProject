@@ -19,15 +19,28 @@ class Product extends Model
     protected $hidden = ['created_at','updated_at'];
 
     
-    public function getDescriptionForEvent(string $eventName) : string {
-        return $this->description . " {$eventName} Oleh " . Auth::user()->name;
-    }
+    // public function getDescriptionForEvent(string $eventName) : string {
+    //     return $this->description . " {$eventName} Oleh " . Auth::user()->name;
+    // }
 
-    public function getActivityLogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->useLogName('product');
-    }
+    // public function getActivityLogOptions(): LogOptions
+    // {
+    //     return LogOptions::defaults()
+    //     ->useLogName('product log');
+    // }
+    public function getActivitylogOptions(): LogOptions
+{
+    return LogOptions::defaults()
+        ->useLogName('product')
+        ->setDescriptionForEvent(function (string $eventName) {
+
+            $nama = auth()->check()
+                ? auth()->user()->name
+                : $this->nama_mhs;
+
+            return ucfirst($eventName) . " data oleh {$nama}";
+        });
+}
 
 
 

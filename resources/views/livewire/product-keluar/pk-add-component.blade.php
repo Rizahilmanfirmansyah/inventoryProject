@@ -19,11 +19,11 @@
                             @error('product_id') <span class="error">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
-                            <label for="" class="form-label">Customer</label>
-                            <select name="" id="" class="form-control" wire:model="customer_id">
-                                <option value="#" selected>Customer Dari</option>
-                                @foreach ($customers as $customer)
-                                <option value="{{$customer->id}}">{{$customer->nama}}</option>
+                            <label for="" class="form-label">Supplier</label>
+                            <select name="" id="" class="form-control" wire:model="supplier_id">
+                                <option value="#" selected>Supplier Dari</option>
+                                @foreach ($suppliers as $supplier)
+                                <option value="{{$supplier->id}}">{{$supplier->nama}}</option>
                                 @endforeach
                             </select>
                         </div>

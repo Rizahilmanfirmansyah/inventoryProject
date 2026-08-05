@@ -41,7 +41,8 @@
                                 <td class="col-2">
                                     <a href="{{ route('product.edit',['product_id'=>$product->id])}}" class="btn btn-secondary fa fa-pencil-square-o"></a>
                                     <a href="{{ route('product.detail', ['product_id'=>$product->id])}}" class="btn btn-secondary fa fa-calendar-o"></a>
-                                    <a href="#" wire:click.prevent="deleteProduct({{$product->id}})" class="btn btn-danger fa fa-trash"></a>
+                                    {{-- <a href="#" wire:click.prevent="deleteProduct({{$product->id}})" class="btn btn-danger fa fa-trash"></a> --}}
+                                    <a href="#" wire:click.prevent="confirmDelete({{$product->id}})" class="btn btn-danger fa fa-trash"></a>
                                 </td>                            
                             </tr>
                             @endforeach

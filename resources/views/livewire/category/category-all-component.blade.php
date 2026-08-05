@@ -33,7 +33,8 @@
                                     <a href="{{ route('category.edit', ['category_id'=>$category->id])}}" class="btn btn-secondary fa fa-pencil-square-o"></a>
                                     &nbsp;
                                     {{-- <a href="javascript:void(0)" wire:click.prevent="deleteConfirmation({{$category->id}})" class="btn btn-danger fa fa-trash"></a> --}}
-                                    <a href="#" wire:click.prevent="delete({{$category->id}})" class="btn btn-danger fa fa-trash"></a>
+                                    {{-- <a href="#" wire:click.prevent="delete({{$category->id}})" class="btn btn-danger fa fa-trash"></a> --}}
+                                    <a href="#" wire:click.prevent="confirmDelete({{$category->id}})" class="btn btn-danger fa fa-trash"></a>  
                                 </td>
                             </tr>
                             @endforeach       

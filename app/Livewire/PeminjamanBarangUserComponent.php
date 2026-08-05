@@ -12,6 +12,6 @@ class PeminjamanBarangUserComponent extends Component
         $peminjaman = Pembar::all();
         return view('livewire.peminjaman-barang-user-component',[
             'peminjaman' => $peminjaman
-        ])->layout('layouts.layout-user');
+        ])->layout('layouts.test-layout');
     }
 }

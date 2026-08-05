@@ -4,7 +4,6 @@ namespace App\Livewire\Category;
 
 use Livewire\Component;
 use App\Models\Category;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryAllComponent extends Component
 {
@@ -27,14 +26,36 @@ class CategoryAllComponent extends Component
 
     //     $this->dispatchBrowserEvent('categoryDelete');
     // }
+    protected $katId;
+    protected $listeners = ['deleteConfirmed' => 'deleteKat'];
 
-    public function delete($id)
+    public function mount()
     {
-        $categories = Category::find($id);
-        $categories->delete();
-        session()->flash('notif', 'berhasil dihapus');
-        Alert::success('Success Title', 'Success Message');
+        $this->katId = Category::all();
     }
+
+     public function confirmDelete($id)
+    {
+        $this->dispatch('show-delete-confirmation', id: $id);
+    }
+
+    public function deleteKat($id)
+    {
+        $kategori = Category::find($id);
+        if ($kategori){
+            $kategori->delete();
+            session()->flash('notif', 'berhasil dihapus');
+            $this->katId = Category::all();
+        }
+    }
+
+    // public function delete($id)
+    // {
+    //     $categories = Category::find($id);
+    //     $categories->delete();
+    //     session()->flash('notif', 'berhasil dihapus');
+    //     Alert::success('Success Title', 'Success Message');
+    // }
     
     public function render()
     {

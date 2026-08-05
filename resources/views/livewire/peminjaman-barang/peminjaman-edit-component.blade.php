@@ -1,6 +1,6 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <div class="container">
+    <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow" style="width: 30rem">

@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SIPERBA Peminjaman Barang</title>
+    <title>Ecommercer</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{--
@@ -145,18 +145,62 @@
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
+               <ul class="nav navbar-nav">
+                    @if (Auth::user()->role === 'admin')
+                        <li class="menu-title">Dashboard Barang</li>
+                        <li class="">
+                            <a href="{{ route('dashboard.admin') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard</a>
+                        </li>
+                        <li class="menu-title">Data User Admin</li>
+                        <li class="">
+                            <a href="{{ route('user.all') }}"><i class="menu-icon fa fa-group"></i>Users</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('suppliers.all') }}"><i class="menu-icon fa fa-truck"></i>Supplier</a>
+                        </li>
+                        <li class="menu-title">Item Barang</li>
+                        <li class="">
+                            <a href="{{ route('category.all') }}"><i class="menu-icon fa fa-tasks"></i>Kategori</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('product.all') }}"><i class="menu-icon fa fa-archive"></i>Barang</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('product_masuk.all') }}"><i class="menu-icon fa fa-sign-in"></i>Barang Masuk</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('product_keluar.all') }}"><i class="menu-icon fa fa-sign-out"></i>Barang Keluar</a>
+                        </li>
+                    @endif
 
                     <li class="menu-title">Peminjaman Barang</li>
                     <li>
-                        <a href="{{ route('peminjaman.user.add') }}"><i class="menu-icon fa fa-database"></i>Ajukan
-                            PemBar</a>
+                        <a href="{{ route('peminjaman.add') }}"><i class="menu-icon fa fa-database"></i>Ajukan PemBar</a>
                     </li>
                     <li>
-                        <a href="{{ route('peminjaman.user') }}">
+                        <a href="{{ route('peminjaman.all') }}">
                             <i class="menu-icon fa fa-clipboard"></i>History PemBar
+                            @if (Auth::user()->role === 'admin')
+                                <span class="badge rounded-circle badge-notification text-light"
+                                    style="background-color: #e46359;">
+                                    {{ $count_peminjaman }}
+                                </span>
+                            @endif
                         </a>
                     </li>
+
+                    @if (Auth::user()->role === 'admin')
+                        <li class="menu-title">User Activity</li>
+                        <li class="">
+                            <a href="{{ route('product.activity') }}"><i class="menu-icon fa fa-archive"></i>Aktivitas Barang</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('product_masuk.activity') }}"><i class="menu-icon fa fa-arrow-circle-right"></i>Log Barang Masuk</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('product_keluar.activity') }}"><i class="menu-icon fa fa-arrow-circle-left"></i>Log Barang Keluar</a>
+                        </li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -167,10 +211,8 @@
         <!-- Header-->
         <header id="header" class="header">
             <div class="top-left">
-                <div class="navbar-header">
-                    {{-- <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a> --}}
-                    <a href="#" class="navbar-brand"><b style="color:#215496">SIPERBA</b></a>
+                  <div class="navbar-header">
+                    <a href="#" class="navbar-brand"><b style="color: #922c1a;">SIPERBA </b> UNAS PASIM</a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -269,10 +311,10 @@
                         {{-- <a class="nav-link" href="#"><i class="fa fa- user"></i>{{Auth::user()->name}}</a> --}}
                      
 
-                        {{-- <form action="{{route('aksilogout')}}" method="post">
+                        <form action="{{route('aksilogout')}}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-light">Logout</button>
-                        </form> --}}
+                        </form>
 
                         <div class="user-menu dropdown-menu">
                             <div class="container">

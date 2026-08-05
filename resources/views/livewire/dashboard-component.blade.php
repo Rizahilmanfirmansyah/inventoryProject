@@ -1,4 +1,4 @@
-<div wire:poll.60s="refresh">
+<div>
     {{-- ============================================================
      SIPERBA – Dashboard Component
      Livewire + Bootstrap 5 + Chart.js

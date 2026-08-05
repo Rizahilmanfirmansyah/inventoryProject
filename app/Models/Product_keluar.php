@@ -15,7 +15,7 @@ class Product_keluar extends Model
 
     protected $table = 'product_keluar';
 
-    protected $fillable = ['product_id','customer_id','qty','tanggal'];
+    protected $fillable = ['product_id','supplier_id','qty','tanggal'];
 
     protected $hidden = ['created_at','updated_at'];
 
@@ -35,10 +35,15 @@ class Product_keluar extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function customer()
+    public function supplier()
     {
-        return $this->belongsTo(Customers::class, 'customer_id');
+        return $this->belongsTo(Suppliers::class, 'supplier_id');
     }
+
+    // public function customer()
+    // {
+    //     return $this->belongsTo(Customers::class, 'customer_id');
+    // }
 
  
 }

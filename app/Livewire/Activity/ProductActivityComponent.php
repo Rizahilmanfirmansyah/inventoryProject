@@ -14,7 +14,7 @@ class ProductActivityComponent extends Component
 
     public function render()
     {
-        $products = Log_Activity::where('log_name', 'product')->paginate(10);
+        $products = Log_Activity::where('log_name', 'product')->get();
         return view('livewire.activity.product-activity-component', [
             'products' => $products
         ])->layout('layouts.layout-admin');

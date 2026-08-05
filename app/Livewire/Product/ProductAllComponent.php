@@ -7,12 +7,35 @@ use App\Models\Product;
 
 class ProductAllComponent extends Component
 {
-    public function deleteProduct($id)
+    protected $ProdId;
+    protected $listeners = ['deleteConfirmed' => 'deleteProd'];
+
+    public function mount()
+    {
+        $this->ProdId = Product::all();
+    }
+
+     public function confirmDelete($id)
+    {
+        $this->dispatch('show-delete-confirmation', id: $id);
+    }
+
+    public function deleteProd($id)
     {
         $product = Product::find($id);
-        $product->delete();
-        session()->flash('notif', 'Product Berhasil Didelete');
+        if ($product){
+            $product->delete();
+            session()->flash('notif', 'berhasil dihapus');
+            $this->ProdId = Product::all();
+        }
     }
+
+    // public function deleteProduct($id)
+    // {
+    //     $product = Product::find($id);
+    //     $product->delete();
+    //     session()->flash('notif', 'Product Berhasil Didelete');
+    // }
     
     public function render()
     {

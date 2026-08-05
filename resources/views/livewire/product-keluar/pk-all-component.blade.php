@@ -29,7 +29,7 @@
                             @foreach ($products_keluar as $product_keluar)
                             <tr>
                                 <td>{{$product_keluar->product->nama}}</td>
-                                <td>{{$product_keluar->customer->nama}}</td>
+                                <td>{{$product_keluar->supplier->nama}}</td>
                                 <td>{{$product_keluar->qty}}</td>
                                 <td>{{$product_keluar->tanggal}}</td>
                                 <td>

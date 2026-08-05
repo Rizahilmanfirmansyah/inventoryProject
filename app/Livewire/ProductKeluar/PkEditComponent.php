@@ -6,11 +6,12 @@ use Livewire\Component;
 use App\Models\Product_keluar;
 use App\Models\Customers;
 use App\Models\Product;
+use App\Models\Suppliers;
 
 class PkEditComponent extends Component
 {
     public $product_id;
-    public $customer_id;
+    public $supplier_id;
     public $qty;
     public $tanggal;
     public $pk_id;
@@ -21,7 +22,7 @@ class PkEditComponent extends Component
         $this->qty = $product_out->qty;
         $this->tanggal = $product_out->tanggal;
         $this->product_id = $product_out->product->id;
-        $this->customer_id = $product_out->customer->id;
+        $this->supplier_id = $product_out->supplier->id;
         $this->pk_id = $product_out->id; 
 
     }
@@ -32,7 +33,7 @@ class PkEditComponent extends Component
         $product_out->qty = $this->qty;
         $product_out->tanggal = $this->tanggal;
         $product_out->product_id = $this->product_id;
-        $product_out->customer_id = $this->customer_id;
+        $product_out->supplier_id = $this->supplier_id;
         $product_out->save();
 
         $product = Product::find($this->product_id);
@@ -47,10 +48,10 @@ class PkEditComponent extends Component
     public function render()
     {
         $products = Product::all();
-        $customers = Customers::all();
+        $suppliers = Suppliers::all();
         return view('livewire.product-keluar.pk-edit-component', [
             'products' => $products,
-            'customers' => $customers
+            'suppliers' => $suppliers
         ])->layout('layouts.layout-admin');
     }
 }

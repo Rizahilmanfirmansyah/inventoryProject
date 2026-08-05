@@ -17,17 +17,29 @@ class PeminjamanEditComponent extends Component
     public $id_user;
     public $tanggal_pengajuan;
     public $nama_mhs;
+    public $semester;
+    public $jurusan;
 
     public function mount($peminjaman_id)
     {
         $peminjaman = Pembar::find($peminjaman_id);
 
         $this->nama_mhs = $peminjaman->nama_mhs;
+        $this->semester = $peminjaman->semester;
+        $this->jurusan = $peminjaman->jurusan;
         $this->id_barang = $peminjaman->id_barang;
         $this->qty = $peminjaman->qty;
-        $this->tanggal_pengajuan = $peminjaman->tanggal_pengajuan;
-        $this->tanggal_pakai = $peminjaman->tanggal_pakai;
-        $this->tanggal_pengembalian = $peminjaman->tanggal_pengembalian;
+        $this->tanggal_pengajuan  = $peminjaman->tanggal_pengajuan 
+        ? \Carbon\Carbon::parse($peminjaman->tanggal_pengajuan)->format('Y-m-d') 
+        : null;
+
+        $this->tanggal_pakai      = $peminjaman->tanggal_pakai 
+        ? \Carbon\Carbon::parse($peminjaman->tanggal_pakai)->format('Y-m-d') 
+        : null;
+
+        $this->tanggal_pengembalian = $peminjaman->tanggal_pengembalian 
+        ? \Carbon\Carbon::parse($peminjaman->tanggal_pengembalian)->format('Y-m-d') 
+        : null;
         $this->status_persetujuan = $peminjaman->status_persetujuan;
         $this->peminjaman_id = $peminjaman->id;
     }
@@ -66,6 +78,8 @@ class PeminjamanEditComponent extends Component
         */
 
         $peminjaman->nama_mhs = $this->nama_mhs;
+        $peminjaman->semester = $this->semester;
+        $peminjaman->jurusan = $this->jurusan;
         $peminjaman->id_barang = $this->id_barang;
         $peminjaman->qty = $this->qty;
         $peminjaman->tanggal_pengajuan = now();

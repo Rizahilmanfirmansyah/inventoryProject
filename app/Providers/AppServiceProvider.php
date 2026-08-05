@@ -33,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $count_peminjaman = Pembar::where('status_persetujuan', 'pending')->count();
             return $view->with('count_peminjaman', $count_peminjaman);
         });
+        View::composer('layouts.admin-test', function ($view) {
+            $count_peminjaman = Pembar::where('status_persetujuan', 'pending')->count();
+            return $view->with('count_peminjaman', $count_peminjaman);
+        });
     }
 }

@@ -11,13 +11,14 @@
                 </div>
             @endif
             <div class="card-body">
-                <a href="{{ route('peminjaman.add') }}" class="btn btn-secondary">tambah</a>
                 <div class="mt-2">
                     <table id="data-table" class="table">
                         <thead>
                             <tr>
                                 {{-- <th>ID</th> --}}
-                                <th>User</th>
+                                <th>Nama Mahasiswa</th>
+                                <th>Semester</th>
+                                <th>Jurusan</th>
                                 <th>Barang</th>
                                 <th>Jumlah Diminta</th>
                                 <th>Tanggal Pengajuan</th>
@@ -31,6 +32,8 @@
                                 <tr>
                                     {{-- <td>{{ $item->id }}</td> --}}
                                     <td>{{ $item->nama_mhs }}</td>
+                                    <td>{{$item->semester}}</td>
+                                    <td>{{$item->jurusan}}</td>
                                     <td>{{ $item->product->nama ?? 'Barang tidak ditemukan' }}</td>
                                     <td>{{ $item->qty }}</td>
                                     <td>{{ $item->tanggal_pengajuan }}</td>

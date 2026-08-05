@@ -17,6 +17,8 @@ class PeminjamanBarangUserAdd extends Component
     public $id_user;
     public $tanggal_pengajuan;
     public $nama_mhs;
+    public $semester;
+    public $jurusan;
     public $product_id;
     
     public function addPeminjaman()
@@ -31,6 +33,8 @@ class PeminjamanBarangUserAdd extends Component
 
         $peminjaman = new Pembar();
         $peminjaman->nama_mhs = $this->nama_mhs;
+        $peminjaman->semester = $this->semester;
+        $peminjaman->jurusan = $this->jurusan;
         $peminjaman->id_barang = $this->id_barang;
         $peminjaman->qty = $this->qty;
         $peminjaman->tanggal_pengajuan = now();
@@ -43,14 +47,15 @@ class PeminjamanBarangUserAdd extends Component
         $barang->qty -= $this->qty;
         $barang->save();
 
-        session()->flash('notif', 'Berhasil Di Input');
-        return redirect()->route('peminjaman.all');
+        session()->flash('notif', 'Peminjaman Berhasil Di Input. Cek status peminjaman secara berkala.');
+        return redirect()->route('peminjaman.user');
     }
+
     public function render()
     {
         $peminjaman = Product::all();
         return view('livewire.peminjaman-barang-user-add',[
             'peminjaman' => $peminjaman
-        ])->layout('layouts.layout-user');
+        ])->layout('layouts.test-layout');
     }
 }

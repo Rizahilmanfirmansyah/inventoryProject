@@ -6,11 +6,12 @@ use Livewire\Component;
 use App\Models\Product_keluar;
 use App\Models\Product;
 use App\Models\Customers;
+use App\Models\Suppliers;
 
 class PkAddComponent extends Component
 {
     public $product_id;
-    public $customer_id;
+    public $supplier_id;
     public $qty;
     public $tanggal;
 
@@ -18,7 +19,7 @@ class PkAddComponent extends Component
     {
         $this->validate([
             'product_id' => 'required',
-            'customer_id' => 'required',
+            'supplier_id' => 'required',
             'qty' => 'required',
             'tanggal' =>'required'
         ]);
@@ -27,7 +28,7 @@ class PkAddComponent extends Component
         $product_out->qty = $this->qty;
         $product_out->tanggal = $this->tanggal;
         $product_out->product_id = $this->product_id;
-        $product_out->customer_id = $this->customer_id;
+        $product_out->supplier_id = $this->supplier_id;
         $product_out->save();
 
         $product = Product::find($this->product_id);
@@ -41,10 +42,10 @@ class PkAddComponent extends Component
     public function render()
     {
         $products = Product::all();
-        $customers = Customers::all();
+        $suppliers = Suppliers::all();
         return view('livewire.product-keluar.pk-add-component', [
             'products' => $products,
-            'customers' => $customers
+            'suppliers' => $suppliers
         ])->layout('layouts.layout-admin');
     }
 }

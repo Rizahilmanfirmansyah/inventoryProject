@@ -33,4 +33,9 @@ class Suppliers extends Model
     {
         return $this->hashMany(Product_masuk::class, 'supplier_id');
     }
+
+      public function product_keluar()
+    {
+        return $this->hashMany(Product_keluar::class, 'supplier_id');
+    }
 }
