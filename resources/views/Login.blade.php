@@ -51,8 +51,6 @@
                     <div class="card login-form">
                         <div class="title text-center">
                             <h3><b style="color: #922c1a;">SIPERBA</b>
-                                <p><h3><b>UNAS PASIM</b></h3>
-                                </p>
                             </h3>
                         </div>
                         <div style="margin-top: 15px;">
@@ -81,15 +79,15 @@
                                 @enderror
                             </div>
                             <div class="checkbox" style="margin-top: 15px;">
-                                <label>
+                                {{-- <label>
                                     <input type="checkbox"> Remember Me
-                                </label>
+                                </label> --}}
                                 {{-- <label class="pull-right">
                                 <a href="#">Forgotten Password?</a>
                             </label> --}}
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                            <button type="submit" class="btn btn-flat m-b-30 m-t-30" style="background-color: #922c1a; color: white;">Sign in</button>
                             {{-- <div class="social-login-content">
                             <div class="social-button">
                                 <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>

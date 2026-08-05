@@ -7,7 +7,7 @@
                     All User
                 </div>
                 <div class="card-body">
-                    <a href="{{route('user.add')}}" class="btn btn-success">Add New User</a>
+                    <a href="{{route('user.add')}}" class="btn btn-success">Tambah User</a>
                     <br><br>
                     @if (Session::has('notif'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">{{Session::get('notif')}}

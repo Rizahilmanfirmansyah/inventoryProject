@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 24rem">
                 <div class="card-header">
-                    Add-Category
+                    Tambah Kategori
                 </div>
                 <div class="card-body">
                     <form wire:submit.prevent="addCategory">

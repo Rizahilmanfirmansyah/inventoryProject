@@ -12,8 +12,8 @@
                     Data-Supplier
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('suppliers.add')}}" class="btn btn-success position">Add Supplier</a>
-                    <a href="{{ route('supplier.export')}}" class="btn btn-secondary position">Export Data</a>
+                    <a href="{{ route('suppliers.add')}}" class="btn btn-success position">Tambah Supplier</a>
+                    <a href="{{ route('supplier.export')}}" class="btn btn-secondary position">Export Data Supplier</a>
                     <br><br>
                     @if (Session::has('notif'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">{{Session::get('notif')}}

@@ -5,23 +5,13 @@
             <div class="col-md-12">
                 <div class="card shadow" style="width: 30rem">
                     <div class="card-header">
-                        <h3>Edit Peminjaman Barang</h3>
+                        <h3>Tambah Peminjaman Barang</h3>
                     </div>
                     <div class="card-body">
-                        <form wire:submit.prevent="EditPeminjaman">
+                        <form wire:submit.prevent="addPeminjaman">
                             <div class="form-group">
                                 <label class="form-label" for="id_user">Nama Mahasiswa</label>
                                 <input type="text" class="form-control" id="id_user" wire:model="nama_mhs"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="semester">Semester</label>
-                                <input type="text" class="form-control" id="semester" wire:model="semester"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="jurusan">Jurusan</label>
-                                <input type="text" class="form-control" id="jurusan" wire:model="jurusan"
                                     required>
                             </div>
                             <div class="form-group">
@@ -52,16 +42,6 @@
                                 <label class="form-label" for="tanggal_pengembalian">Tanggal Pengembalian</label>
                                 <input type="date" class="form-control" id="tanggal_pengembalian"
                                     wire:model="tanggal_pengembalian" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="status">Status Persetujuan</label>
-                                <select class="form-control" id="status" wire:model="status_persetujuan" required>
-                                    <option value="">Pilih Status</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Disetujui">Disetujui</option>
-                                    <option value="Ditolak">Ditolak</option>
-                                    <option value="Dikembalikan">Dikembalikan</option>
-                                </select>
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>

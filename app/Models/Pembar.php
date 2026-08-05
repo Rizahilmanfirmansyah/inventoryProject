@@ -13,6 +13,7 @@ class Pembar extends Model
         'id_barang',
         'nama_mhs',
         'semester',
+        'jurusan',
         'jumlah_diminta',
         'tanggal_pengajuan',
         'tanggal_pakai',

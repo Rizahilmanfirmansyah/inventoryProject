@@ -12,7 +12,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div> 
                     @endif
-                    <a href="{{ route('category.add')}}" class="btn btn-success"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Add Category</a>
+                    <a href="{{ route('category.add')}}" class="btn btn-success">Tambah Kategori</a>
                     <br><br>
                     <table id="data-table" class="table">
                         <thead>

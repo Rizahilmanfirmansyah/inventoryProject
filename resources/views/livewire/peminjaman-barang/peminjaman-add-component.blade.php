@@ -1,17 +1,27 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <div class="container">
-        <div class="row">
+    <div class="container d-flex justify-content-center">
+        <div class="row ">
             <div class="col-md-12">
                 <div class="card shadow" style="width: 30rem">
                     <div class="card-header">
-                        <h3>Tambah Peminjaman Barang</h3>
+                        <h4>Tambah Peminjaman Barang</h4>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="addPeminjaman">
                             <div class="form-group">
                                 <label class="form-label" for="id_user">Nama Mahasiswa</label>
                                 <input type="text" class="form-control" id="id_user" wire:model="nama_mhs"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="semester">Semester</label>
+                                <input type="text" class="form-control" id="semester" wire:model="semester"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="jurusan">Jurusan</label>
+                                <input type="text" class="form-control" id="jurusan" wire:model="jurusan"
                                     required>
                             </div>
                             <div class="form-group">

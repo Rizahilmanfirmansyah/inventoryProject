@@ -46,6 +46,8 @@ use App\Livewire\Retur\ReturEditComponent;
 use App\Livewire\PeminjamanBarang\PeminjamanAddComponent;
 use App\Livewire\PeminjamanBarang\PeminjamanAllComponent;
 use App\Livewire\PeminjamanBarang\PeminjamanEditComponent;
+use App\Livewire\PeminjamanBarangUserComponent;
+use App\Livewire\PeminjamanBarangUserAdd;
 
 
 
@@ -136,6 +138,9 @@ Route::get('edit-retur/{retur_id}', ReturEditComponent::class)->name('retur.edit
 Route::get('peminjaman', PeminjamanAllComponent::class)->name('peminjaman.all');
 Route::get('add-peminjaman', PeminjamanAddComponent::class)->name('peminjaman.add');
 Route::get('edit-peminjaman/{peminjaman_id}', PeminjamanEditComponent::class)->name('peminjaman.edit');
+
+Route::get('peminjaman-user', PeminjamanBarangUserComponent::class)->name('peminjaman.user');
+Route::get('add-peminjaman-user', PeminjamanBarangUserAdd::class)->name('peminjaman.user.add');
 
 Route::post('import-retur', [ReturImportController::class, 'ReturImport'])->name('retur.import');
 Route::get('export-retur', [ReturImportController::class, 'ReturExport'])->name('retur.export');

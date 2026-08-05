@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Livewire\PeminjamanBarang;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Pembar;
 use App\Models\Product;
 
-class PeminjamanAddComponent extends Component
+
+class PeminjamanBarangUserAdd extends Component
 {
     public $id_barang;
     public $qty;
@@ -16,8 +17,6 @@ class PeminjamanAddComponent extends Component
     public $id_user;
     public $tanggal_pengajuan;
     public $nama_mhs;
-    public $semester;
-    public $jurusan;
     public $product_id;
     
     public function addPeminjaman()
@@ -32,8 +31,6 @@ class PeminjamanAddComponent extends Component
 
         $peminjaman = new Pembar();
         $peminjaman->nama_mhs = $this->nama_mhs;
-        $peminjaman->semester = $this->semester;
-        $peminjaman->jurusan = $this->jurusan;
         $peminjaman->id_barang = $this->id_barang;
         $peminjaman->qty = $this->qty;
         $peminjaman->tanggal_pengajuan = now();
@@ -49,16 +46,11 @@ class PeminjamanAddComponent extends Component
         session()->flash('notif', 'Berhasil Di Input');
         return redirect()->route('peminjaman.all');
     }
-
-
-
-    
-
     public function render()
     {
         $peminjaman = Product::all();
-        return view('livewire.peminjaman-barang.peminjaman-add-component',[
+        return view('livewire.peminjaman-barang-user-add',[
             'peminjaman' => $peminjaman
-        ])->layout('layouts.layout-admin');
+        ])->layout('layouts.layout-user');
     }
 }

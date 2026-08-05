@@ -7,7 +7,7 @@
                     Data Product Keluar 
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('product_keluar.add')}}" class="btn btn-success">Add Product Out</a>
+                    <a href="{{ route('product_keluar.add')}}" class="btn btn-success">Tambah Produk Keluar</a>
                     <a href="{{ route('product_keluar.export')}}"  class="btn btn-secondary">Export Data</a>
                     <br><br>
                     @if (Session::has('notif'))
@@ -15,11 +15,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div> 
                     @endif
-                    <table class="table" id="product-keluar">
+                    <table class="table" id="data-table">
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Customer</th>
+                                <th>User</th>
                                 <th>Quantity</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
